@@ -1077,25 +1077,52 @@
     }
 
     // MEMBUKA UNDANGAN
-    async function bukaUndangan() {
-      const isi = document.getElementById("isiUndangan");
-      const musik = document.getElementById("musik");
-      const musicButton = document.getElementById("musicButton");
+async function bukaUndangan() {
+  const isi = document.getElementById("isiUndangan");
+  const musik = document.getElementById("musik");
+  const musicButton = document.getElementById("musicButton");
 
-      isi.hidden = false;
-      document.getElementById("openButton").innerHTML = "Undangan Dibuka";
-      
-      document.getElementById("ayat").scrollIntoView({ behavior: "smooth" });
+  isi.hidden = false;
+  document.getElementById("openButton").innerHTML = "Undangan Dibuka";
+  
+  document.getElementById("ayat").scrollIntoView({ behavior: "smooth" });
 
-      try {
-        await musik.play();
-        musicButton.textContent = "Ⅱ Jeda Musik";
-      } catch (error) {
-        musicButton.textContent = "♫ Putar Musik";
+  try {
+    // 1. Jalankan pemutaran lebih dulu agar browser memuat audio
+    await musik.play();
+    
+    // 2. Set posisi waktu ke detik 106 tepat setelah pemutaran aktif
+    musik.currentTime = 106;
+    musicButton.textContent = "Ⅱ Jeda Musik";
+  } catch (error) {
+    musicButton.textContent = "♫ Putar Musik";
+    console.log("Kendala pemutaran audio:", error);
+  }
+
+  triggerScrollAnimations();
+}
+
+// TOGGLE MUSIK
+async function toggleMusik() {
+  const musik = document.getElementById("musik");
+  const musicButton = document.getElementById("musicButton");
+
+  if (musik.paused) {
+    try {
+      await musik.play();
+      // Jika musik diputar dari posisi paling awal, lompatkan ke detik 106
+      if (musik.currentTime < 10) {
+        musik.currentTime = 106;
       }
-
-      triggerScrollAnimations();
+      musicButton.textContent = "Ⅱ Jeda Musik";
+    } catch (error) {
+      musicButton.textContent = "Gagal memutar";
     }
+  } else {
+    musik.pause();
+    musicButton.textContent = "♫ Putar Musik";
+  }
+}
 
     // TOGGLE MUSIK
     async function toggleMusik() {
