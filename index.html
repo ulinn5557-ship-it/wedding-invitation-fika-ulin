@@ -728,7 +728,7 @@
     <div class="hero-photo-wrapper">
       <img
         class="hero-photo"
-        src="cof.jpeg"
+        src="images/cof.jpeg"
         alt="Foto Fika dan Ulin"
         style="cursor: pointer;"
         onclick="openLightbox(this.src)"
@@ -888,19 +888,19 @@
 
         <div class="gallery-collage animate-pop">
           <div class="collage-item collage-item-1">
-            <img src="pasangan.jpg" alt="Foto Galeri 1" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x500/f8bbd0/d81b60?text=Foto+1'">
+            <img src="images/pasangan.jpg" alt="Foto Galeri 1" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x500/f8bbd0/d81b60?text=Foto+1'">
           </div>
           <div class="collage-item collage-item-2">
-            <img src="pasangan (2).jpg" alt="Foto Galeri 2" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x300/fce4ec/d81b60?text=Foto+2'">
+            <img src="images/pasangan (2).jpg" alt="Foto Galeri 2" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x300/fce4ec/d81b60?text=Foto+2'">
           </div>
           <div class="collage-item collage-item-3">
-            <img src="SKT_7115.jpg" alt="Foto Galeri 3" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x300/e8829b/ffffff?text=Foto+3'">
+            <img src="images/SKT_7115.jpg" alt="Foto Galeri 3" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x300/e8829b/ffffff?text=Foto+3'">
           </div>
           <div class="collage-item collage-item-4">
-            <img src="SKT_7142.jpg" alt="Foto Galeri 4" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x300/f8bbd0/d81b60?text=Foto+4'">
+            <img src="images/SKT_7142.jpg" alt="Foto Galeri 4" onclick="openLightbox(this.src)" onerror="this.src='https://placehold.co/400x300/f8bbd0/d81b60?text=Foto+4'">
           </div>
           <div class="collage-item collage-item-5">
-            <img src="SKT_7246.jpg" alt="Foto Galeri 5" onerror="this.src='https://placehold.co/400x300/fce4ec/d81b60?text=Foto+5'" onclick="openLightbox(this.src)">
+            <img src="images/SKT_7246.jpg" alt="Foto Galeri 5" onerror="this.src='https://placehold.co/400x300/fce4ec/d81b60?text=Foto+5'" onclick="openLightbox(this.src)">
           </div>
         </div>
       </div>
@@ -1062,7 +1062,7 @@
   </div>
 
   <!-- FILE MUSIK (Audio amin.mp3 di folder audio/) -->
-  <audio id="musik" src="amin.mp3" loop preload="auto"></audio>
+  <audio id="musik" src="audio/amin.mp3" loop preload="auto"></audio>
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
@@ -1123,24 +1123,6 @@ async function toggleMusik() {
     musicButton.textContent = "♫ Putar Musik";
   }
 }
-
-    // TOGGLE MUSIK
-    async function toggleMusik() {
-      const musik = document.getElementById("musik");
-      const musicButton = document.getElementById("musicButton");
-
-      if (musik.paused) {
-        try {
-          await musik.play();
-          musicButton.textContent = "Ⅱ Jeda Musik";
-        } catch (error) {
-          musicButton.textContent = "Gagal memutar";
-        }
-      } else {
-        musik.pause();
-        musicButton.textContent = "♫ Putar Musik";
-      }
-    }
 
     // COUNTDOWN TIMER
     function updateCountdown() {
